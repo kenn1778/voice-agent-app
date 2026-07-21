@@ -1,0 +1,19 @@
+{
+  "name": "@voice-agent/infra",
+  "version": "1.0.0",
+  "scripts": {
+    "cdk": "cdk",
+    "deploy": "cdk deploy --all --require-approval never"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.160.0",
+    "constructs": "^10.4.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.160.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.160.0-alpha.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "ts-node": "^10.9.0",
+    "@types/node": "^22.0.0"
+  }
+}
