@@ -26,7 +26,7 @@ export class PresignStack extends Stack {
       runtime: Runtime.PYTHON_3_12,
       code: Code.fromAsset('../services/presign-api'),
       handler: 'src/handler.handler',
-      environment: { AGENT_RUNTIME_ENDPOINT: 'wss://agent.example.com/ws' },
+      environment: { AGENT_RUNTIME_ENDPOINT: 'wss://johnkennedy007agent.duckdns.org/ws' },
     });
 
     const sessionHandler = new Function(this, 'SessionHandler', {
