@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react';
 import { VoiceWebSocket, ConnectionState } from '../../api/websocket';
 import { getPresignedUrl } from '../../api/presign';
+import { updateSession } from '../../api/sessions';
 import { useSessionStore } from '../../store/sessionStore';
 import { useAuth } from '../../auth/AuthProvider';
 import { useAudioRecorder } from '../../hooks/useAudioRecorder';
@@ -29,6 +30,7 @@ export function useVoiceSession() {
       if (!token) throw new Error('No access token available');
 
       const presignRes = await getPresignedUrl(token);
+      store.setSessionId(presignRes.sessionId);
       logger.info('Got presigned URL', { sessionId: presignRes.sessionId });
 
       type TranscriptPayload = { id?: string; speaker?: string; text?: string; timestamp?: string; isFinal?: boolean };
@@ -86,13 +88,32 @@ export function useVoiceSession() {
     }
   }, [getAccessToken, recorder]);
 
-  const stop = useCallback(() => {
+  const stop = useCallback(async () => {
     recorder.stop();
     wsRef.current?.disconnect();
     wsRef.current = null;
     store.setMicActive(false);
     store.setConnectionState('disconnected');
-  }, [recorder]);
+
+    const { sessionId, transcript, digest } = store;
+    if (sessionId) {
+      try {
+        const token = await getAccessToken();
+        if (!token) return;
+        const transcriptData = transcript.map((e) => ({
+          speaker: e.speaker, text: e.text, timestamp: e.timestamp,
+        }));
+        await updateSession(token, sessionId, {
+          status: 'completed',
+          transcript: transcriptData,
+          digest: digest || undefined,
+        });
+        logger.info('Session saved', { sessionId });
+      } catch (err) {
+        logger.error('Failed to save session', err);
+      }
+    }
+  }, [recorder, getAccessToken, store]);
 
   const sendAudio = useCallback((_data: ArrayBuffer) => {
     // handled by useAudioRecorder callback

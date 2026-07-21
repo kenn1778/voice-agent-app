@@ -1,0 +1,139 @@
+{
+  "/VoiceAgentAuthStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/IdentityPool": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IdentityPool"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new AuthStack (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\lib\\auth-stack.ts:29:26)",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/IdentityPoolRoleAttachment": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IdentityPoolRoleAttachment"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new AuthStack (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\lib\\auth-stack.ts:44:5)",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/UserPool/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPool6BA7E5F2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPool2 in aws-cdk-lib...",
+        "new AuthStack (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\lib\\auth-stack.ts:16:21)",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/UserPoolClient/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolClient2F5918F7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPoolClient2 in aws-cdk-lib...",
+        "new AuthStack (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\lib\\auth-stack.ts:23:27)",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/CognitoAuthRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CognitoAuthRole7B7E27C0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new AuthStack (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\lib\\auth-stack.ts:34:18)",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:13:5)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/VoiceAgentAuthStack/CognitoAuthRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CognitoAuthRoleDefaultPolicy942426C8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new AuthStack (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\lib\\auth-stack.ts:40:10)",
+        "<anonymous> (C:\\Users\\OMEN\\Desktop\\ReactNativeReanimated\\voice-agent-app\\infra\\bin\\infra.ts:9:1)",
+        "...node internals..."
+      ]
+    }
+  ]
+}

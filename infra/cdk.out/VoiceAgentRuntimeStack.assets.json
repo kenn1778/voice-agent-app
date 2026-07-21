@@ -1,0 +1,21 @@
+{
+  "version": "54.0.0",
+  "files": {
+    "6ce7df566dc517c9dbe3d65397a0f1d0237ac571b2a6b0a08cbfa16cee925c75": {
+      "displayName": "VoiceAgentRuntimeStack Template",
+      "source": {
+        "path": "VoiceAgentRuntimeStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "352206182975-us-east-1-26169df5": {
+          "bucketName": "cdk-hnb659fds-assets-352206182975-us-east-1",
+          "objectKey": "6ce7df566dc517c9dbe3d65397a0f1d0237ac571b2a6b0a08cbfa16cee925c75.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::352206182975:role/cdk-hnb659fds-file-publishing-role-352206182975-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

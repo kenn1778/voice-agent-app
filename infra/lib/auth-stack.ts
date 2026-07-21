@@ -1,7 +1,7 @@
 ﻿import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import {
-  UserPool, UserPoolClient, UserPoolClientIdentityProvider, OAuthScope,
+  UserPool, UserPoolClient, UserPoolClientIdentityProvider, OAuthScope, AccountRecovery,
   CfnIdentityPool, CfnIdentityPoolRoleAttachment,
 } from 'aws-cdk-lib/aws-cognito';
 import { Role, FederatedPrincipal, PolicyStatement } from 'aws-cdk-lib/aws-iam';
@@ -18,7 +18,7 @@ export class AuthStack extends Stack {
       signInAliases: { email: true },
       standardAttributes: { email: { required: true, mutable: true } },
       passwordPolicy: { minLength: 8, requireSymbols: true },
-      accountRecovery: UserPool.ACCOUNT_RECOVERY.EMAIL_ONLY,
+      accountRecovery: AccountRecovery.EMAIL_ONLY,
     });
     this.userPoolClient = new UserPoolClient(this, 'UserPoolClient', {
       userPool: this.userPool,

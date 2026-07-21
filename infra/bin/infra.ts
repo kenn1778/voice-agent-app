@@ -9,5 +9,5 @@ const env = { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_
 new AuthStack(app, 'VoiceAgentAuthStack', { env });
 new PresignStack(app, 'VoiceAgentPresignStack', { env });
 new AgentRuntimeStack(app, 'VoiceAgentRuntimeStack', { env });
-new MonitoringStack(app, 'VoiceAgentMonitoringStack', { env, alarmEmail: process.env.ALARM_EMAIL });
+new MonitoringStack(app, 'VoiceAgentMonitoringStack', { env, alarmEmail: process.env.ALARM_EMAIL } as any);
 app.synth();
