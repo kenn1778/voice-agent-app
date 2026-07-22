@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { TouchableOpacity, Text, ActivityIndicator, View } from 'react-native';
+import { TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 
 type ButtonProps = {
   title: string;
@@ -9,64 +9,117 @@ type ButtonProps = {
   loading?: boolean;
   disabled?: boolean;
   icon?: string;
-  className?: string;
 };
 
-const variantClasses: Record<string, string> = {
-  primary: 'bg-primary active:bg-primaryDark shadow-lg shadow-indigo-500/30',
-  secondary: 'bg-secondary active:bg-dark shadow-lg shadow-sky-500/30',
-  danger: 'bg-error active:bg-red-600 shadow-lg shadow-red-500/30',
-  ghost: 'bg-transparent border border-gray-300 dark:border-gray-600',
+const colors = {
+  surface: '#291B49',
+  surfaceAlt: '#33235C',
+  borderSoft: 'rgba(255,255,255,0.07)',
+  textPrimary: '#FBF7FF',
+  textSecondary: '#C7B7E8',
+  textFaint: '#8B77B3',
+  mint: '#2FE6C0',
+  coral: '#FF6B5B',
 };
 
-const sizeClasses: Record<string, string> = {
-  sm: 'py-2 px-4 rounded-lg',
-  md: 'py-3 px-6 rounded-xl',
-  lg: 'py-4 px-8 rounded-2xl',
+const sizeMap: Record<string, { py: number; px: number; borderRadius: number; fontSize: number }> = {
+  sm: { py: 8, px: 16, borderRadius: 8, fontSize: 13 },
+  md: { py: 12, px: 24, borderRadius: 12, fontSize: 14 },
+  lg: { py: 16, px: 32, borderRadius: 16, fontSize: 16 },
 };
 
-const textClasses: Record<string, string> = {
-  primary: 'text-white',
-  secondary: 'text-white',
-  danger: 'text-white',
-  ghost: 'text-text dark:text-textDark',
+const variantMap: Record<string, { bg: string; textColor: string; border?: string }> = {
+  primary: { bg: colors.mint, textColor: '#1D1333' },
+  secondary: { bg: colors.surfaceAlt, textColor: colors.textPrimary, border: colors.borderSoft },
+  danger: { bg: colors.coral, textColor: colors.textPrimary },
+  ghost: { bg: 'transparent', textColor: colors.textSecondary, border: colors.borderSoft },
 };
 
-export function Button({ title, onPress, variant = 'primary', size = 'md', loading, disabled, icon, className = '' }: ButtonProps) {
+export function Button({
+  title,
+  onPress,
+  variant = 'primary',
+  size = 'md',
+  loading,
+  disabled,
+  icon,
+}: ButtonProps) {
+  const sizeStyle = sizeMap[size] || sizeMap.md;
+  const variantStyle = variantMap[variant] || variantMap.primary;
+
   return (
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled || loading}
-      className={`items-center justify-center flex-row ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-40' : ''} ${className}`}
       accessibilityRole="button"
       accessibilityLabel={title}
       accessibilityState={{ disabled: disabled || loading }}
+      activeOpacity={0.7}
+      style={{
+        paddingVertical: sizeStyle.py,
+        paddingHorizontal: sizeStyle.px,
+        borderRadius: sizeStyle.borderRadius,
+        backgroundColor: variantStyle.bg,
+        borderWidth: variantStyle.border ? 1 : 0,
+        borderColor: variantStyle.border || undefined,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: disabled ? 0.4 : 1,
+      }}
     >
       {loading ? (
-        <ActivityIndicator color={variant === 'ghost' ? '#4F46E5' : '#FFFFFF'} size="small" />
+        <ActivityIndicator color={variantStyle.textColor} size="small" />
       ) : (
         <>
-          {icon && <Text className="text-lg mr-2">{icon}</Text>}
-          <Text className={`font-semibold ${textClasses[variant]}`}>{title}</Text>
+          {icon && <Text style={{ fontSize: sizeStyle.fontSize + 2, marginRight: 8 }}>{icon}</Text>}
+          <Text style={{ color: variantStyle.textColor, fontSize: sizeStyle.fontSize, fontWeight: '600' }}>
+            {title}
+          </Text>
         </>
       )}
     </TouchableOpacity>
   );
 }
 
-export function IconButton({ icon, onPress, variant = 'primary', size = 'md', disabled, className = '' }: {
-  icon: string; onPress: () => void; variant?: string; size?: string; disabled?: boolean; className?: string;
+export function IconButton({
+  icon,
+  onPress,
+  variant = 'primary',
+  size = 'md',
+  disabled,
+}: {
+  icon: string;
+  onPress: () => void;
+  variant?: string;
+  size?: string;
+  disabled?: boolean;
 }) {
-  const sizeMap: Record<string, string> = { sm: 'w-10 h-10', md: 'w-14 h-14', lg: 'w-20 h-20' };
-  const colorMap: Record<string, string> = { primary: 'bg-primary', danger: 'bg-error', secondary: 'bg-secondary' };
+  const sizeMap: Record<string, number> = { sm: 40, md: 56, lg: 80 };
+  const circleSize = sizeMap[size] || sizeMap.md;
+  const colorMap: Record<string, string> = {
+    primary: '#2FE6C0',
+    danger: '#FF6B5B',
+    secondary: '#33235C',
+  };
+
   return (
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled}
-      className={`${sizeMap[size] || sizeMap.md} ${colorMap[variant] || colorMap.primary} rounded-full items-center justify-center shadow-lg active:opacity-80 ${disabled ? 'opacity-40' : ''} ${className}`}
       accessibilityRole="button"
+      activeOpacity={0.7}
+      style={{
+        width: circleSize,
+        height: circleSize,
+        borderRadius: circleSize / 2,
+        backgroundColor: colorMap[variant] || colorMap.primary,
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: disabled ? 0.4 : 1,
+      }}
     >
-      <Text className="text-white text-2xl">{icon}</Text>
+      <Text style={{ color: '#1D1333', fontSize: circleSize * 0.4 }}>{icon}</Text>
     </TouchableOpacity>
   );
 }
