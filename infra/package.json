@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "cdk": "cdk",
-    "deploy": "cdk deploy --all --require-approval never"
+    "deploy": "cdk deploy --all --require-approval never",
+    "deploy:frontend": "aws s3 sync ../apps/mobile/dist/web s3://$(aws cloudformation describe-stacks --stack-name VoiceAgentFrontendStack --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output text) --delete && aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name VoiceAgentFrontendStack --query 'Stacks[0].Outputs[?OutputKey==`DistributionId`].OutputValue' --output text) --paths '/*'"
   },
   "dependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.114.1-alpha.0",
