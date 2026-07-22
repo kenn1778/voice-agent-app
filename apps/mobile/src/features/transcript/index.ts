@@ -1,4 +1,4 @@
-import { useSessionStore } from '../../store/sessionStore';
+﻿import { useSessionStore } from '../../store';
 
 export function useTranscript() {
   const transcript = useSessionStore((s) => s.transcript);

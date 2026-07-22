@@ -1,8 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { VoiceWaveform } from '../components/VoiceWaveform';
-import { ErrorBanner } from '../components/ErrorBanner';
-import { useSessionStore } from '../store/sessionStore';
+import { VoiceWaveform, ErrorBanner } from '../components';
+import { useSessionStore } from '../store';
 import { useVoiceSession } from '../features/voice-session';
 
 export function VoiceSessionScreen() {

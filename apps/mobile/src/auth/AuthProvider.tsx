@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useEffect, useCallback, useState } from 'react';
+﻿import React, { createContext, useContext, useEffect, useCallback, useState } from 'react';
 import { AuthenticationDetails, CognitoUser, CognitoUserSession } from 'amazon-cognito-identity-js';
 import { CognitoIdentityClient, GetIdCommand, GetCredentialsForIdentityCommand } from '@aws-sdk/client-cognito-identity';
 import { userPool, cognitoConfig } from './cognitoConfig';
-import { storeTokens, getTokens, clearTokens, StoredTokens } from './tokenStorage';
-import { useAuthStore } from '../store/authStore';
+import { storeTokens, getTokens, clearTokens } from './tokenStorage';
+import type { StoredTokens } from './tokenStorage';
+import { useAuthStore } from '../store';
 
 type AwsCredentials = {
   accessKeyId: string;

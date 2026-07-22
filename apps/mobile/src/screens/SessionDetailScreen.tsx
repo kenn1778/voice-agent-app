@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
-import { useAuth } from '../auth/AuthProvider';
-import { getSession } from '../api/sessions';
-import { logger } from '../utils/logger';
-import type { RootStackParamList } from '../navigation/RootNavigator';
+import { useAuth } from '../auth';
+import { getSession } from '../api';
+import { logger } from '../utils';
+import type { RootStackParamList } from '../navigation';
 
 export function SessionDetailScreen() {
   const { getAccessToken } = useAuth();

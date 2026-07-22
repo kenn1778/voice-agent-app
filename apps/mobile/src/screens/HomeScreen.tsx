@@ -1,9 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useAuth } from '../auth/AuthProvider';
-import type { RootStackParamList } from '../navigation/RootNavigator';
+import { useAuth } from '../auth';
+import type { RootStackParamList } from '../navigation';
 
 export function HomeScreen() {
   const { signOut } = useAuth();
@@ -19,7 +19,7 @@ export function HomeScreen() {
         accessibilityLabel="Start voice session"
         accessibilityRole="button"
       >
-        <Text className="text-white text-4xl">ðŸŽ¤</Text>
+        <Text className="text-white text-4xl">🎤</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Transcript')}

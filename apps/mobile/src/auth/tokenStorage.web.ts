@@ -1,10 +1,10 @@
-type StoredTokens = {
+﻿export type StoredTokens = {
   idToken: string;
   accessToken: string;
   refreshToken: string;
 };
 
-const STORAGE_KEY = 'voice_agent_tokens';
+const STORAGE_KEY = 'com.voiceagent.cognito';
 
 export async function storeTokens(tokens: StoredTokens): Promise<void> {
   try {

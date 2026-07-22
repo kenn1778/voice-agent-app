@@ -1,1 +1,26 @@
-{"compilerOptions": {"target": "esnext", "module": "commonjs", "lib": ["es2022"], "allowJs": true, "jsx": "react-native","strict": true, "noImplicitAny": true, "strictNullChecks": true, "noUnusedLocals": true, "noUnusedParameters": true,"moduleResolution": "node", "resolveJsonModule": true, "allowSyntheticDefaultImports": true, "esModuleInterop": true,"skipLibCheck": true, "forceConsistentCasingInFileNames": true,"baseUrl": ".", "paths": { "@/*": ["src/*"] } },"include": ["src/**/*", "types/**/*", "global.css"], "exclude": ["node_modules", "__tests__", "android", "ios"]}
+﻿{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["es2022"],
+    "allowJs": true,
+    "jsx": "react-native",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "types/**/*", "global.css"],
+  "exclude": ["node_modules", "__tests__", "android", "ios"]
+}

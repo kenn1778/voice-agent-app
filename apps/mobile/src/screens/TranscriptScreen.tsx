@@ -1,12 +1,13 @@
-import React, { useCallback } from 'react';
+﻿import React, { useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useQuery } from '@tanstack/react-query';
-import { useAuth } from '../auth/AuthProvider';
-import { listSessions, SessionItem } from '../api/sessions';
-import { logger } from '../utils/logger';
-import type { RootStackParamList } from '../navigation/RootNavigator';
+import { useAuth } from '../auth';
+import { listSessions } from '../api';
+import type { SessionItem } from '../api';
+import { logger } from '../utils';
+import type { RootStackParamList } from '../navigation';
 
 export function TranscriptScreen() {
   const { getAccessToken } = useAuth();

@@ -1,7 +1,18 @@
-const path = require('path');
+﻿const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const workspaceRoot = path.resolve(__dirname, '../../');
+
+try { require('dotenv').config({ path: require('path').resolve(__dirname, '.env') }); } catch (e) { }
+
+const envVars = ['COGNITO_', 'API_', 'WS_', 'PRESIGN_'];
+const envKeys = {};
+for (const key of Object.keys(process.env)) {
+  if (envVars.some(p => key.startsWith(p))) {
+    envKeys["process.env." + key] = JSON.stringify(process.env[key]);
+  }
+}
 
 module.exports = {
   mode: 'development',
@@ -46,11 +57,16 @@ module.exports = {
         test: /\.m?js$/i,
         resolve: { fullySpecified: false },
       },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.css$/,
+        use: ['style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }, 'postcss-loader'],
+      },
       { test: /\.(png|jpg|gif|svg)$/, type: 'asset/resource' },
     ],
   },
   plugins: [
+    new webpack.DefinePlugin(envKeys),
+    new webpack.DefinePlugin({ __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production') }),
     new HtmlWebpackPlugin({ template: './public/index.html', title: 'Voice Agent' }),
   ],
   devServer: { port: 3000, hot: true, historyApiFallback: true, client: { overlay: false } },

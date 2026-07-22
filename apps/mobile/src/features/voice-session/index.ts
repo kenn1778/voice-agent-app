@@ -1,12 +1,12 @@
-import { useCallback, useRef } from 'react';
-import { VoiceWebSocket, ConnectionState } from '../../api/websocket';
-import { getPresignedUrl } from '../../api/presign';
-import { updateSession } from '../../api/sessions';
-import { useSessionStore } from '../../store/sessionStore';
-import { useAuth } from '../../auth/AuthProvider';
-import { useAudioRecorder } from '../../hooks/useAudioRecorder';
-import { categorizeError, getUserFacingError } from '../../utils/errorHandling';
-import { logger } from '../../utils/logger';
+﻿import { useCallback, useRef } from 'react';
+import { VoiceWebSocket } from '../../api';
+import type { ConnectionState } from '../../api';
+import { getPresignedUrl, updateSession } from '../../api';
+import { useSessionStore } from '../../store';
+import { useAuth } from '../../auth';
+import { useAudioRecorder } from '../../hooks';
+import { categorizeError, getUserFacingError } from '../../utils';
+import { logger } from '../../utils';
 
 export function useVoiceSession() {
   const wsRef = useRef<VoiceWebSocket | null>(null);
